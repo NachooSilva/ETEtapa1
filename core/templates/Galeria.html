@@ -66,7 +66,7 @@
           </tr>
         </thead>
         <tbody>
-        {%for co in datos%}
+        {%for co in datoscolab%}
           <tr>
             <td>{{co.rutColaborador}}</td>
             <td><img src="{{co.image.url}}" class="img-fluid rounded" width="60px" height="70px"></td>
@@ -100,7 +100,7 @@
       <a target="_blank" class="shared ce" id="sml" title="Email"></a>		
     </div>
     <p class="mb-1">Ignacio Silva &copy; Derechos reservados.</p>
-    <p class="mb-0">¿Nuevo en nuestra Pagina? <a href="{% url 'inicio' %}">visita nuestro homepage</a> o lee  <a href="#">nuestra politica</a>.</p>
+    <p class="mb-0">¿Nuevo en nuestra Pagina? <a href="{% url 'inicio' %}">visita nuestro homepage.</a></p>
   </div>
 </footer>
  
