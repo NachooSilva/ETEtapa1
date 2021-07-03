@@ -1,0 +1,141 @@
+{%load static%}
+<!doctype html>
+<html>
+<head>
+  
+  <title>Agregar Colaboradores</title> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="{% static 'css/estilo.css' %}" type="text/css" rel="stylesheet"> 
+  <link href="{% static 'img/logo.ico' %}" rel="icon" type="image/x-icon" /> 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body class="fondo">
+    <nav class="navbar navbar-expand-sm navbar-dark"  style="background-color: #000000;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+          <!-- logo -->
+        <div>
+          <img src="{%static 'img/logo2.jpeg'%}" width="70" height="70" style="margin-right: 10px;">
+        </div>
+        </div>
+         <!-- menu -->
+     <div class="collapse navbar-collapse" id="opciones"> 
+      <h2 class="tipoletra"> Caos News!</h2>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link tamano" href="{% url 'inicio' %}" style="color: aliceblue;">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link tamano" href="{% url 'Galeria' %}" style="color: aliceblue; " >Lista de Colaboradores</a> 
+        </li>
+        <li class="nav-item">
+            <a class="nav-link tamano" href="{% url 'colaborador_crear' %}" style="color: aliceblue; " >Agregar Colaboradores </a> 
+         </li>
+        </ul>
+      </div>
+    </nav>
+ <!--FOTO SUPERIOR-->
+ <div class="hero-image">
+    <div class="hero-text">
+      <h1>Agregar Colaboradores</h1>
+      <p>Complete el registro con los formatos adecuados o no se subiran</p>
+    </div>
+  </div>
+  <br>
+  <!--Formularaio-->
+<div class="row">
+  <form method="POST" id="formulario" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+     <div class="form-group">
+          {{ colaborador_form.image.label}}
+          {{ colaborador_form.image}}
+     </div>
+     
+    <div class="row">
+      <div class="form-group">
+         {{ colaborador_form.rutColaborador.label}}
+         {{ colaborador_form.rutColaborador}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+          {{ colaborador_form.nombre.label}}
+          {{ colaborador_form.nombre}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+          {{ colaborador_form.telefono.label}}
+          {{ colaborador_form.telefono}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+          {{ colaborador_form.direccion.label}}
+          {{ colaborador_form.direccion}}
+      </div>
+     </div>
+
+    <div class="row">
+      <div class="form-group">
+        {{ colaborador_form.correo.label}}
+        {{ colaborador_form.correo}}                  
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        {{ colaborador_form.pais.label}}
+        {{ colaborador_form.pais}}
+       </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        {{ colaborador_form.contraseña.label}}
+        {{ colaborador_form.contraseña}}
+       </div>
+    </div>
+
+    <div class="row">        
+      <button style="margin: 10px" type="submit" id="btnValidar" class="btn btn-primary">Subir</button> 
+      <button onClick="javascript:history.go(-1)" class="btn btn-primary btn-xl" style="margin: 10px">Atras</button>              
+    </div>
+  </form>        
+</div>
+  
+<!-- Footer -->
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Subir al inicio</a>
+    </p>
+    <div class="shared-panel">
+      <span>Encuentranos en nuestras redes sociales</span><br>
+      <a target="_blank" class="shared fb" title="Facebook"></a>	
+      <a target="_blank" class="shared tt" title="Twitter"></a>
+      <a target="_blank" class="shared gp" title="Google+"></a>
+      <a  data-action='share/whatsapp/share' class="shared wa" title="WhatsApp"></a>
+      <a target="_blank" class="shared ce" id="sml" title="Email"></a>		
+    </div>
+      <p class="mb-1">Ignacio Silva &copy; Derechos reservados.</p>
+      <p class="mb-0">¿Nuevo en nuestra Pagina? <a href="{% url 'inicio' %}">visita nuestro homepage.</a></p>
+  </div>
+</footer>
+   
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      
+</body>
+</html>

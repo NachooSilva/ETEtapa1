@@ -1,0 +1,114 @@
+{%load static%}
+<!doctype html>
+<html>
+<head>
+  <title>Galería</title> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="{% static 'css/estilo.css' %}" type="text/css" rel="stylesheet">
+  <link href="{% static 'img/logo.ico' %}" rel="icon" type="image/x-icon" /> 
+  
+
+  <!-- Bootstrap CSS --> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="fondo">
+    <nav class="navbar navbar-expand-sm navbar-dark"  style="background-color: #000000;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+       
+          <!-- logo -->
+        <a class="navbar-dark">
+          <img src="{% static 'img/logo2.jpeg' %}" width="70" height="70" style="margin-right: 10px;" >
+        </a>
+        </div>
+         <!-- menu -->
+     <div class="collapse navbar-collapse" id="opciones"> 
+      <h2 class="tipoletra"> Caos News!</h2>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link tamano" href="{% url 'inicio' %}" style="color: aliceblue;">Inicio</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link tamano" href="{% url 'Galeria' %}" style="color: aliceblue; " >Lista de Colaboradores </a> 
+        </li>
+        <li class="nav-item">
+          <a class="nav-link tamano" href="{% url 'colaborador_crear' %}" style="color: aliceblue; " >Agregar Colaboradores </a> 
+        </li>
+        </ul>
+      </div>
+    </nav>
+        
+      <!--FOTO SUPERIOR-->
+      <div class="hero-image">
+        <div class="hero-text">
+          <h1>Listado de Colaboradores</h1>
+          <p>Toda la info de los Colaboradores</p>
+        </div>
+      </div>
+      <br>
+    <div clas="table-responsive">
+      <table class="table table-striped table-dark  ">
+        <thead>
+          <tr>
+            <th scope="col">Rut</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Pais</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Opciones</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+        {%for co in datos%}
+          <tr>
+            <td>{{co.rutColaborador}}</td>
+            <td><img src="{{co.image.url}}" class="img-fluid rounded" width="60px" height="70px"></td>
+            <td>{{co.nombre}}</td>
+            <td>{{co.telefono}}</td>              
+            <td>{{co.direccion}}</td>
+            <td>{{co.correo}}</td>
+            <td>{{co.pais}}</td>
+            <td>{{co.contraseña}}</td>
+            <td><a href="{% url 'colaborador_modi' co.rutColaborador %}">Modificar</a></td>
+            <td><a href="{% url 'colaborador_eli' co.rutColaborador %}">Eliminar</a></td>
+            <td><a href="{% url 'colaborador_crear' %}">Agregar </a></td>
+          </tr>
+        {%endfor%}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer -->
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Subir al inicio</a>
+    </p>
+    <div class="shared-panel">
+      <span>Encuentranos en nuestras redes sociales</span><br>
+      <a target="_blank" class="shared fb" title="Facebook"></a>	
+      <a target="_blank" class="shared tt" title="Twitter"></a>
+      <a target="_blank" class="shared gp" title="Google+"></a>
+      <a  data-action='share/whatsapp/share' class="shared wa" title="WhatsApp"></a>
+      <a target="_blank" class="shared ce" id="sml" title="Email"></a>		
+    </div>
+    <p class="mb-1">Ignacio Silva &copy; Derechos reservados.</p>
+    <p class="mb-0">¿Nuevo en nuestra Pagina? <a href="{% url 'inicio' %}">visita nuestro homepage</a> o lee  <a href="#">nuestra politica</a>.</p>
+  </div>
+</footer>
+ 
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
+
+    </body>
+</html>
